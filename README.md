@@ -1,6 +1,6 @@
-![image]()
+![image](https://github.com/JDSherbert/Unreal-Engine-Networked-Sprint-Component/assets/43964243/861c2355-34f5-4261-a6b0-deffb480d7d8)
 
-# Repository Template
+# Unreal Engine Networked Sprint Component
 
 <!-- Header Start -->
 <a href = "https://docs.unrealengine.com/5.3/en-US/"> <img height="40" img width="40" src="https://cdn.simpleicons.org/unrealengine/white"> </a> 
