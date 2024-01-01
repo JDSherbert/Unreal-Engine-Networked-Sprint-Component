@@ -28,7 +28,7 @@
 This is a replicated sprint component that leverages the enhanced input system for bindings and input action definitions. The sprint component is designed to be easily integrated into your Unreal Engine projects, providing a replicated sprint functionality that synchronizes across the network.
 
 To use this SprintComponent, attach it to an ACharacter.
-It works by binding the defined Enhanced Input Action to a function, which modifies the walkspeed value contained within the CharacterMovementComponent (which normally exists by default on ACharacter class objects.)
+It works by binding the defined Enhanced Input Action to a function, which modifies the walkspeed value contained within the CharacterMovementComponent (which normally exists by default on ACharacter class objects.) We make sure this occurs across a network by using an RPC (Remote Procedural Call), and the `GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps)` function.
 
 Feel free to tweak the values in the script, I've made them easy to find in the .cpp file, inside a namespace!
 The code is commented well and transient/autopopulated variables are marked as such.
