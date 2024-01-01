@@ -35,7 +35,7 @@ public:
 
 	/** Sprint Input Action - Assign bindings here. */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Sherbert|Component|Sprint|Input")
-	UInputAction* InputAction_Sprint;
+	UInputAction* SprintInputAction;
 
 	/** Default Walk Speed - Transient - Assigned by OwningActor's Locomotion Data. */
 	UPROPERTY(Transient, BlueprintReadOnly, Category = "Sherbert|Component|Sprint|Locomotion")
@@ -77,7 +77,7 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override
 	{ 
 		Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-		DOREPLIFETIME(UBlueGhost_SprintComponent, bSprinting);
+		DOREPLIFETIME(USprintComponent, bSprinting);
 	}
 
 protected:
@@ -112,7 +112,7 @@ public:
 	* @author JDSherbert
 	*/
 	UFUNCTION(BlueprintPure, Category = "Sherbert|Component|Sprint")
-	FORCEINLINE bool Get_IsSprinting() const { return bSprinting; }
+	FORCEINLINE bool IsSprinting() const { return bSprinting; }
 
 	/**
 	* Sets Sprint Mode Truth.
@@ -121,7 +121,7 @@ public:
 	* @author JDSherbert
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Sherbert|Component|Sprint")
-	FORCEINLINE bool Set_IsSprinting(const bool bActive = false) { bSprinting = bActive; return bSprinting; }
+	FORCEINLINE bool SetSprinting(const bool bActive = false) { bSprinting = bActive; return bSprinting; }
 
 	/**
 	* Gets Sprint Speed used by the component as defined.
@@ -130,7 +130,7 @@ public:
 	* @author JDSherbert
 	*/
 	UFUNCTION(BlueprintPure, Category = "Sherbert|Component|Sprint")
-	FORCEINLINE float Get_SprintSpeed() const { return SprintSpeed; }
+	FORCEINLINE float GetSprintSpeed() const { return SprintSpeed; }
 
 	/**
 	* Sets a new Sprint Speed for the component to use when sprinting.
@@ -139,7 +139,7 @@ public:
 	* @author JDSherbert
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Sherbert|Component|Sprint")
-	FORCEINLINE float Set_SprintSpeed(const float NewSprintSpeed) { SprintSpeed = NewSprintSpeed; return SprintSpeed; }
+	FORCEINLINE float SetSprintSpeed(const float NewSprintSpeed) { SprintSpeed = NewSprintSpeed; return SprintSpeed; }
 
 	/**
 	* Gets Rotation Rate used by the component as defined.
@@ -148,7 +148,7 @@ public:
 	* @author JDSherbert
 	*/
 	UFUNCTION(BlueprintPure, Category = "Sherbert|Component|Sprint")
-	FORCEINLINE FRotator Get_RotationRate() const { return SprintRotationRate; }
+	FORCEINLINE FRotator GetRotationRate() const { return SprintRotationRate; }
 
 	/**
 	* Sets a new Rotation Speed for the component to use when sprinting.
@@ -157,7 +157,7 @@ public:
 	* @author JDSherbert
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Sherbert|Component|Sprint")
-	FORCEINLINE FRotator Set_RotationRate(const FRotator NewSprintRotationRate) { SprintRotationRate = NewSprintRotationRate; return SprintRotationRate; }
+	FORCEINLINE FRotator SetRotationRate(const FRotator NewSprintRotationRate) { SprintRotationRate = NewSprintRotationRate; return SprintRotationRate; }
 
 	/**
 	* Gets Sprint Key Hold Time.
@@ -166,7 +166,7 @@ public:
 	* @author JDSherbert
 	*/
 	UFUNCTION(BlueprintPure, Category = "Sherbert|Component|Sprint")
-	FORCEINLINE float Get_KeyHoldTime() const { return SprintKeyHoldTime; }
+	FORCEINLINE float GetKeyHoldTime() const { return SprintKeyHoldTime; }
 
 	/**
 	* Gets Movement Component reference used by the component as acquired on construction.
@@ -175,7 +175,7 @@ public:
 	* @author JDSherbert
 	*/
 	UFUNCTION(BlueprintPure, Category = "Sherbert|Component|Sprint")
-	FORCEINLINE UCharacterMovementComponent* Get_MovementComponent() const { return MovementComponent; }
+	FORCEINLINE UCharacterMovementComponent* GetMovementComponent() const { return MovementComponent; }
 
 	/**
 	* Gets Sprint Key Input Action.
@@ -184,7 +184,7 @@ public:
 	* @author JDSherbert
 	*/
 	UFUNCTION(BlueprintPure, Category = "Sherbert|Component|Sprint")
-	FORCEINLINE UInputAction* Get_InputAction() const { return InputAction_Sprint; }
+	FORCEINLINE UInputAction* GetInputAction() const { return InputAction_Sprint; }
 
 	/**
 	* Sets a new Sprint Key Input Action.
@@ -193,7 +193,7 @@ public:
 	* @author JDSherbert
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Sherbert|Component|Sprint")
-	FORCEINLINE UInputAction* Set_InputAction(UInputAction* NewInputAction) { InputAction_Sprint = NewInputAction; return InputAction_Sprint; }
+	FORCEINLINE UInputAction* SetInputAction(UInputAction* NewInputAction) { InputAction_Sprint = NewInputAction; return InputAction_Sprint; }
 
 	/* ----------------------------- RepNotify ----------------------------- */
 
