@@ -12,21 +12,20 @@
 
 namespace SprintComponentDefs
 {
-	const TCHAR* ClassPath_InputAction_Sprint = TEXT("/Game/Project/Blueprints/Input/Actions/InputAction_Sprint.uasset");
-	constexpr float Default_SprintSpeed = 1000.0f;
-	const FRotator Default_SprintRotationSpeed = FRotator(0.0f, 50.0f, 0.0f);
+	constexpr float DefaultSprintSpeed = 1000.0f;
+	const FRotator DefaultSprintRotationSpeed = FRotator(0.0f, 50.0f, 0.0f);
 }
 
 /* ---------------------------- Method Definition -------------------------------- */
 
 USprintComponent::USprintComponent(const FObjectInitializer& ObjectInitializer)
-	: InputAction_Sprint(nullptr)
+	: SprintInputAction(nullptr)
 	, DefaultWalkSpeed(0.0f)
 	, DefaultRotationRate(FRotator(0.0f, 0.0f, 0.0f))
 	, bSprinting(false)
 	, SprintKeyHoldTime(0.0f)
-	, SprintSpeed(SprintComponentDefs::Default_SprintSpeed)
-	, SprintRotationRate(SprintComponentDefs::Default_SprintRotationSpeed)
+	, SprintSpeed(SprintComponentDefs::DefaultSprintSpeed)
+	, SprintRotationRate(SprintComponentDefs::DefaultSprintRotationSpeed)
 {
 	PrimaryComponentTick.bCanEverTick = true;
 	SetIsReplicatedByDefault(true);
@@ -85,14 +84,14 @@ void USprintComponent::Sprint(const bool bActive /*= false*/)
 
 void USprintComponent::Server_Sprint_Implementation(const bool bActive /* = false*/)
 {
-	Set_IsSprinting(bActive);
-	if (Get_IsSprinting()) SprintKeyHoldTime += FApp::GetDeltaTime();
+	SetSprinting(bActive);
+	if (IsSprinting()) SprintKeyHoldTime += FApp::GetDeltaTime();
 	else if (SprintKeyHoldTime != 0.0f) SprintKeyHoldTime = 0.0f;
 
-	if (Get_MovementComponent())
+	if (UCharacterMovementComponent* CharacterMovementComponent = GetMovementComponent())
 	{
-		Get_MovementComponent()->MaxWalkSpeed = (Get_IsSprinting()) ? SprintSpeed : DefaultWalkSpeed;
-		Get_MovementComponent()->RotationRate = (Get_IsSprinting()) ? SprintRotationRate : DefaultRotationRate;
+		CharacterMovementComponent->MaxWalkSpeed = (IsSprinting()) ? SprintSpeed : DefaultWalkSpeed;
+		CharacterMovementComponent->RotationRate = (IsSprinting()) ? SprintRotationRate : DefaultRotationRate;
 	}
 }
 
@@ -100,7 +99,7 @@ void USprintComponent::Server_Sprint_Implementation(const bool bActive /* = fals
 
 void USprintComponent::OnRep_bSprinting()
 {
-	(Get_IsSprinting()) ? Event_OnSprintStart() : Event_OnSprintStop();
+	(IsSprinting()) ? Event_OnSprintStart() : Event_OnSprintStop();
 }
 
 /* ------------------------------------------------------------------------------- */
