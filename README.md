@@ -24,8 +24,8 @@
 
 -----------------------------------------------------------------------
 ## Overview
-Some words about the project here-
 
+This is a replicated sprint component that leverages the enhanced input system for bindings and input action definitions. The sprint component is designed to be easily integrated into your Unreal Engine projects, providing a replicated sprint functionality that synchronizes across the network.
 
 -----------------------------------------------------------------------
 
