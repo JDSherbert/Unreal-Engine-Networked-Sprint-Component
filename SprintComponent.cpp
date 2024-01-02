@@ -53,7 +53,10 @@ void USprintComponent::Init()
 {
 	if (AActor* Owner = GetOwner())
 	{
-		RegisterComponent();
+		/** This should happen automatically - 
+  		  * AActor will handle the initialization of its own subcomponents!
+      		  */
+		// RegisterComponent();
 
 		if (ACharacter* Character = CastChecked<ACharacter>(Owner))
 		{
