@@ -53,7 +53,8 @@ void USprintComponent::Init()
 {
 	if (AActor* Owner = GetOwner())
 	{
-		/** This should happen automatically - 
+		/** 
+  		* This should happen automatically - 
   		* AActor will handle the initialization of its own subcomponents!
 		*/
 		// RegisterComponent();
