@@ -16,7 +16,7 @@ namespace SprintComponentDefs
 	const FRotator DefaultSprintRotationSpeed = FRotator(0.0f, 50.0f, 0.0f);
 }
 
-/* ---------------------------- Method Definition -------------------------------- */
+/* ---------------------------- Method Definitions ------------------------------- */
 
 USprintComponent::USprintComponent(const FObjectInitializer& ObjectInitializer)
 	: SprintInputAction(nullptr)
