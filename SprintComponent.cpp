@@ -63,8 +63,8 @@ void USprintComponent::Init()
 		{
 			if (UEnhancedInputComponent* TempInput = Character->EnhancedInputComponent)
 			{
-				TempInput->BindAction(InputAction_Sprint, ETriggerEvent::Triggered, this, &USprintComponent::Sprint, true); //! Not working
-				TempInput->BindAction(InputAction_Sprint, ETriggerEvent::Completed, this, &USprintComponent::Sprint, false);
+				TempInput->BindAction(SprintInputAction, ETriggerEvent::Triggered, this, &USprintComponent::Sprint, true); //! Not working
+				TempInput->BindAction(SprintInputAction, ETriggerEvent::Completed, this, &USprintComponent::Sprint, false);
 			}
 		}
 		
